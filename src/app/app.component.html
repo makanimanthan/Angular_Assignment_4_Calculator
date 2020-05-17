@@ -1,0 +1,50 @@
+<table>
+    <tr>
+        <td>
+            <label>First Number</label>
+        </td>
+        <td>
+            <input #firstNumber="ngModel" type="text" name="firstNumber" id="firstNumber"
+            [(ngModel)]="calculator.firstNumber" required>
+            <div [hidden]="firstNumber.valid || firstNumber.untouched" class="error">
+                First number is required.
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Second Number</label>
+        </td>
+        <td>
+            <input #secondNumber="ngModel" type="number" name="secondNumber" id="secondNumber"
+            [(ngModel)]="calculator.secondNumber" required>
+            <div [hidden]="secondNumber.valid || secondNumber.untouched" class="error">
+                Second number is required.
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Operation</label>
+        </td>
+        <td>
+            <select id="operation" [(ngModel)]="calculator.operation" name="operation" required>
+                <option *ngFor="let item of operationList" [value]="item">{{item}}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button type="button" (click) = "calculatorService.calculate(calculator)">Calculate</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Result:</label>
+        </td>
+        <td>
+            <label>{{calculator.result}}</label>
+        </td>
+    </tr>
+</table>
